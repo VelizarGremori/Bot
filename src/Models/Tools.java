@@ -1,6 +1,5 @@
-package Models;
+package models;
 
-import com.mysql.cj.log.Log;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;

@@ -1,15 +1,15 @@
-package Commands;
+package commands;
 
 import org.apache.commons.cli.*;
 
 public class TransferCommandParameters extends CommandParameters{
 
-    private String owner_id;
+    private String source_id;
     private String target_id;
     private String amount;
 
-    public String getOwner_id() {
-        return owner_id;
+    public String getSource_id() {
+        return source_id;
     }
 
     public String getTarget_id() {
@@ -45,8 +45,15 @@ public class TransferCommandParameters extends CommandParameters{
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        this.owner_id = cmd.getOptionValue("o");
+        var args = cmd.getArgList().iterator();
+        this.source_id = cmd.getOptionValue("o");
+        if(this.source_id == null && args.hasNext())
+            this.source_id = args.next();
         this.target_id = cmd.getOptionValue("t");
-        this.amount = cmd.getOptionValue("a");
+        if(this.target_id == null && args.hasNext())
+            this.target_id = args.next();
+        this.amount = cmd.getOptionValue("a");;
+        if(this.amount == null && args.hasNext())
+            this.amount = args.next();
     }
 }

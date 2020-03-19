@@ -42,13 +42,17 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Commands" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="CommandExecuters" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.Test.ModelTest">
     <configuration name="ConsoleMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ConsoleMain" />
       <module name="Lune3" />
@@ -64,11 +68,11 @@
       </method>
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Test.Test" />
+      <option name="MAIN_CLASS_NAME" value="test.Test" />
       <module name="Lune3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Test.*" />
+          <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -76,11 +80,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test.ModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lune3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.Test" />
+      <option name="METHOD_NAME" value="ModelTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.ConsoleMain" />
+        <item itemvalue="JUnit.Test.ModelTest" />
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.ConsoleMain" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -111,10 +132,14 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="445" y="146" width="390" height="758" key="#com.intellij.ide.util.MemberChooser" timestamp="1584294118170">
+    <state x="237" y="159" key="#Test" timestamp="1584607731579">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="445" y="146" width="390" height="758" key="#com.intellij.ide.util.MemberChooser/0.0.1280.984@0.0.1280.984" timestamp="1584294118170" />
+    <state x="237" y="159" key="#Test/0.0.1280.984@0.0.1280.984" timestamp="1584607731579" />
+    <state x="445" y="146" width="390" height="758" key="#com.intellij.ide.util.MemberChooser" timestamp="1584607280840">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="445" y="146" width="390" height="758" key="#com.intellij.ide.util.MemberChooser/0.0.1280.984@0.0.1280.984" timestamp="1584607280840" />
     <state x="296" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1584283553149">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
@@ -123,46 +148,46 @@
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state x="370" y="239" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.984@0.0.1280.984" timestamp="1584292481699" />
-    <state width="1237" height="263" key="GridCell.Tab.0.bottom" timestamp="1584289779666">
+    <state width="1237" height="263" key="GridCell.Tab.0.bottom" timestamp="1584607632398">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1584289779666" />
-    <state width="1237" height="263" key="GridCell.Tab.0.center" timestamp="1584289779666">
+    <state width="1237" height="263" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1584607632398" />
+    <state width="1237" height="263" key="GridCell.Tab.0.center" timestamp="1584607632398">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1584289779666" />
-    <state width="1237" height="263" key="GridCell.Tab.0.left" timestamp="1584289779666">
+    <state width="1237" height="263" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1584607632398" />
+    <state width="1237" height="263" key="GridCell.Tab.0.left" timestamp="1584607632397">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1584289779666" />
-    <state width="1237" height="263" key="GridCell.Tab.0.right" timestamp="1584289779666">
+    <state width="1237" height="263" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1584607632397" />
+    <state width="1237" height="263" key="GridCell.Tab.0.right" timestamp="1584607632398">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1584289779666" />
-    <state width="1237" height="404" key="GridCell.Tab.1.bottom" timestamp="1584289779664">
+    <state width="1237" height="263" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1584607632398" />
+    <state width="1237" height="404" key="GridCell.Tab.1.bottom" timestamp="1584551778466">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="404" key="GridCell.Tab.1.bottom/0.0.1280.984@0.0.1280.984" timestamp="1584289779664" />
-    <state width="1237" height="404" key="GridCell.Tab.1.center" timestamp="1584289779664">
+    <state width="1237" height="404" key="GridCell.Tab.1.bottom/0.0.1280.984@0.0.1280.984" timestamp="1584551778466" />
+    <state width="1237" height="404" key="GridCell.Tab.1.center" timestamp="1584551778466">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="404" key="GridCell.Tab.1.center/0.0.1280.984@0.0.1280.984" timestamp="1584289779664" />
-    <state width="1237" height="404" key="GridCell.Tab.1.left" timestamp="1584289779664">
+    <state width="1237" height="404" key="GridCell.Tab.1.center/0.0.1280.984@0.0.1280.984" timestamp="1584551778466" />
+    <state width="1237" height="404" key="GridCell.Tab.1.left" timestamp="1584551778466">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="404" key="GridCell.Tab.1.left/0.0.1280.984@0.0.1280.984" timestamp="1584289779664" />
-    <state width="1237" height="404" key="GridCell.Tab.1.right" timestamp="1584289779664">
+    <state width="1237" height="404" key="GridCell.Tab.1.left/0.0.1280.984@0.0.1280.984" timestamp="1584551778466" />
+    <state width="1237" height="404" key="GridCell.Tab.1.right" timestamp="1584551778466">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="404" key="GridCell.Tab.1.right/0.0.1280.984@0.0.1280.984" timestamp="1584289779664" />
-    <state x="120" y="66" key="SettingsEditor" timestamp="1584260030030">
+    <state width="1237" height="404" key="GridCell.Tab.1.right/0.0.1280.984@0.0.1280.984" timestamp="1584551778466" />
+    <state x="120" y="66" key="SettingsEditor" timestamp="1584604594955">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="120" y="66" key="SettingsEditor/0.0.1280.984@0.0.1280.984" timestamp="1584260030030" />
-    <state x="344" y="385" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584260019946">
+    <state x="120" y="66" key="SettingsEditor/0.0.1280.984@0.0.1280.984" timestamp="1584604594955" />
+    <state x="344" y="385" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584604586172">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="344" y="385" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.984@0.0.1280.984" timestamp="1584260019946" />
+    <state x="344" y="385" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.984@0.0.1280.984" timestamp="1584604586172" />
     <state x="289" y="107" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1584183833932">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
@@ -176,19 +201,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Models/Tools.java</url>
+          <url>file://$PROJECT_DIR$/src/models/Tools.java</url>
           <line>86</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Test/Test.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="38" />
+          <url>file://$PROJECT_DIR$/src/commands/CommandFactory.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ConsoleMain.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="56" />
+          <line>11</line>
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

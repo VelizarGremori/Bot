@@ -1,6 +1,5 @@
-package Models;
+package models;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 
@@ -49,7 +48,6 @@ public class User {
             var id = resultSet.getInt(1);
             var name = resultSet.getString("Name");
             var role = resultSet.getInt("Role");
-            var persId = resultSet.getInt("PersId");
 
             return new User(id, login, name, role);
         }

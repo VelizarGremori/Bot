@@ -1,4 +1,4 @@
-package Commands;
+package commands;
 
 public enum CommandState {
     SUCCESS (0),

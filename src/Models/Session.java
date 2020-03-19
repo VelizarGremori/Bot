@@ -1,6 +1,5 @@
-package Models;
+package models;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,21 +9,29 @@ public class Session {
 
     private long userId;
     private long chatId;
-    private Date lastAuth;
     private String mode;
 
-    public Session(long userId, long chatId, Date lastAuth, String mode) {
+    public Session(long userId, long chatId, String mode) {
         this.userId = userId;
         this.chatId = chatId;
-        this.lastAuth = lastAuth;
         this.mode = mode;
+    }
+
+    public static Session insertSession(long chatId)  {
+        try{
+            HashMap<String, Object> args = new HashMap<String, Object>();
+            args.put("ChatId", chatId);
+            Tools.insert(TabelName, args);
+            return getSession(chatId);
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 
     public static Session insertSession(long userId, long chatId) throws SQLException {
         HashMap<String, Object> args = new HashMap<String, Object>();
         args.put("UserId", userId);
         args.put("ChatId", chatId);
-        args.put("LastAuth", new Date());
         Tools.insert(TabelName, args);
         return getSession(chatId);
     }
@@ -34,9 +41,8 @@ public class Session {
         var resultSet = Tools.getResult(Tools.getSelectQuery(TabelName, "ChatId", Long.toString(chatId)));
         if(resultSet.next()){
             var userId = resultSet.getLong("UserId");
-            var lastAuth = resultSet.getDate("LastAuth");
             var mode = resultSet.getString("Mode");
-            return new Session(userId, chatId, lastAuth, mode);
+            return new Session(userId, chatId, mode);
         }
         }catch (SQLException e){
             throw new RuntimeException(e);
@@ -46,7 +52,8 @@ public class Session {
 
     public static void updateSession(long chatId, String mode) {
         var a = Tools.getUpdateQuery(TabelName,
-                "Mode", mode, "ChatId", Long.toString(chatId));
+                "Mode", "\"" + mode +"\"", "ChatId", Long.toString(chatId));
+        System.out.println(a);
         try {
             Tools.getStatement().executeUpdate(
                     a);
@@ -68,10 +75,6 @@ public class Session {
 
     public long getChatId() {
         return chatId;
-    }
-
-    public Date getLastAuth() {
-        return lastAuth;
     }
 
     public String getMode() {

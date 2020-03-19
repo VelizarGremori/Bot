@@ -1,4 +1,4 @@
-package Commands;
+package commands;
 
 import java.sql.SQLException;
 
@@ -25,11 +25,11 @@ public class HelpCommand extends Command<HelpCommandParameters>{
     @Override
     protected void executeCommand(HelpCommandParameters params) throws SQLException {
         response.setMessage(
-                "You can use these commands: \n\r" +
-                "/login Login Password" +
-                "/accounts - get list your accounts (accountId : balance) \n\r" +
-                "/transfer OwnerId TargetId Amount - transfer money to another user." +
-                        "OwnerId - your accountId TargetId - target accountId, Amount - amount for transfer");
+                "Вы можете использовать следующие команды: \n\r" +
+                "/login Login Password \n\r" +
+                "/accounts - получить список ваших счетов (accountId : balance) \n\r" +
+                "/transfer SourceId TargetId Amount - перевод денег другому пользователю." +
+                        "SourceId - Номер вашего счета (accountId) TargetId - Номер счета получателя (accountId), Amount - Сумма для перевода");
         response.setState(CommandState.SUCCESS);
     }
 }

@@ -1,13 +1,11 @@
-package Models;
+package models;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class    Person {
-    private static final String TabelName = "persons";
+    private static final String TabelName = "person";
     
     private long Id;
     private String Name;

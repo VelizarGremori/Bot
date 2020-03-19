@@ -1,4 +1,4 @@
-package Commands;
+package commands;
 
 import org.apache.commons.cli.*;
 public class LoginCommandParameters extends CommandParameters
@@ -27,8 +27,15 @@ public class LoginCommandParameters extends CommandParameters
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
+            var args = cmd.getArgList().iterator();
+            if(args.hasNext())
+                args.next();
             this.login = cmd.getOptionValue("l");
+            if(this.login == null && args.hasNext())
+                this.login = args.next();
             this.password = cmd.getOptionValue("p");
+            if(this.password == null && args.hasNext())
+                this.password = args.next();
     }
 
     public String getLogin() {

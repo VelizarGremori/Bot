@@ -1,5 +1,6 @@
-package Commands;
+package commands;
 
+import org.apache.commons.logging.Log;
 import org.reflections.Reflections;
 
 import java.util.Set;
@@ -7,16 +8,16 @@ import java.util.Set;
 public class CommandFactory {
     public static Command getCommand(String command)
     {
-        Reflections reflections = new Reflections("Commands");
+        Reflections reflections = new Reflections("commands");
 
         Set<Class<? extends Command>> allClasses =
                 reflections.getSubTypesOf(Command.class);
 
-        for (Class<? extends Command> commandExecuterClass:
+        for (Class<? extends Command> commandClass:
              allClasses ) {
-            if (commandExecuterClass.getAnnotation(CommandName.class).value() == command) {
+            if (command.equals(commandClass.getAnnotation(CommandName.class).value())) {
                 try {
-                    return commandExecuterClass.getConstructor().newInstance();
+                    return commandClass.getConstructor().newInstance();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

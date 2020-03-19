@@ -1,8 +1,7 @@
-package Commands;
+package commands;
 
-import Models.Session;
-import Models.User;
-import org.apache.commons.cli.*;
+import models.Session;
+import models.User;
 
 import java.sql.SQLException;
 
@@ -34,6 +33,7 @@ public class LoginCommand extends Command<LoginCommandParameters> {
             response.setState(CommandState.REQUEST_PARAMETER);
             return false;
         }
+        System.out.println(params.getLogin());
         if(params.getPassword() == null)
         {
             response.setMessage("Введите пароль");

@@ -1,25 +1,48 @@
-package Test;
+package test;
 
-import Models.Account;
-import Models.Person;
-import Models.User;
+import models.Account;
+import models.Person;
+import models.Transaction;
+import models.User;
+import org.junit.Assert;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.UUID;
 
 public class Test {
-    public static void main(String[] args) {
+
+    @org.junit.Test
+    public void ModelTest() {
         try {
             var uid = UUID.randomUUID().toString();
             var user = User.insertUser(uid, uid, uid);
-            var person = Person.insertPerson(uid, user.getId());
+            Person.insertPerson(uid, user.getId());
             var pers = Person.getPersonsByUser(user.getId());
-            var account1 = Account.insertAccount(pers.get(0).getId(), 100);
-            var account2 = Account.insertAccount(pers.get(0).getId(), 0);
-            Account.transfer(account1.getId(), account2.getId(), 50);
+            var sourceAccount = Account.insertAccount(pers.get(0).getId(), 100);
+            var targetAccount = Account.insertAccount(pers.get(0).getId(), 0);
+            Account.transfer(sourceAccount.getId(), targetAccount.getId(), 50);
+
+            sourceAccount = Account.getAccount(sourceAccount.getId());
+            Assert.assertEquals(50, sourceAccount.getSum());
+
+            targetAccount = Account.getAccount(targetAccount.getId());
+            Assert.assertEquals(50, targetAccount.getSum());
+
+            var SourceTransactions = Transaction.getTransactionByAccount(sourceAccount.getId());
+            var targetTransactions = Transaction.getTransactionByAccount(sourceAccount.getId());
+
+            Assert.assertEquals(1, SourceTransactions.size());
+            Assert.assertEquals(sourceAccount.getId(), SourceTransactions.get(0).getSourceAccountId());
+            Assert.assertEquals(targetAccount.getId(), SourceTransactions.get(0).getTargetAccountId());
+            Assert.assertEquals(50, SourceTransactions.get(0).getAmount());
+
+            Assert.assertEquals(1, targetTransactions.size());
+            Assert.assertEquals(sourceAccount.getId(), SourceTransactions.get(0).getSourceAccountId());
+            Assert.assertEquals(targetAccount.getId(), SourceTransactions.get(0).getTargetAccountId());
+            Assert.assertEquals(50, SourceTransactions.get(0).getAmount());
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

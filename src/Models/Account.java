@@ -1,7 +1,8 @@
-package Models;
+package models;
 
-import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Account {
@@ -25,6 +26,31 @@ public class Account {
         return null;
     }
 
+    public static ArrayList<Account> getAccountsByPerson(long persId) throws SQLException{
+        var accounts = new ArrayList<Account>();
+        var resultSet = Tools.getResult(Tools.getSelectQuery(TabelName, "PersId", Long.toString(persId)));
+        while (resultSet.next()){
+            var id = resultSet.getLong("Id");
+            var sum = resultSet.getInt("Sum");
+            var access = resultSet.getBoolean("Access");
+            var ip = resultSet.getString("Ip");
+
+            accounts.add(  new Account(id, sum, access, persId, ip));
+        }
+        return accounts;
+    }
+
+    public static ArrayList<Account> getAccountsByUser(long userId) throws SQLException{
+        var accounts = new ArrayList<Account>();
+        var persons = Person.getPersonsByUser(userId);
+        var inter = persons.iterator();
+        while (inter.hasNext()){
+            var person = inter.next();
+            accounts.addAll(getAccountsByPerson(person.getId()));
+        }
+        return accounts;
+    }
+
     public static Account insertAccount(long persId, int startCapital) throws SQLException {
         HashMap<String, Object> args = new HashMap<>();
         args.put("PersId", persId);
@@ -33,18 +59,21 @@ public class Account {
         return getAccount(id);
     }
 
-    public static void transfer(long ownerAccountId, long targetAccountId, long sum) throws  SQLException {
+    public static void transfer(long sourceAccountId, long targetAccountId, long sum) throws  SQLException {
         var conn = Tools.getConnection();
         conn.beginRequest();
 
-        var ownerAccount = getAccount(ownerAccountId);
+        var ownerAccount = getAccount(sourceAccountId);
         var targetAccount = getAccount(targetAccountId);
         if (ownerAccount.getSum() > sum && sum > 0) {
-            var a = Tools.getUpdateQuery(TabelName,"Sum", Long.toString(ownerAccount.getSum() - sum), "Id", Long.toString(ownerAccountId));
+            var a = Tools.getUpdateQuery(TabelName,"Sum", Long.toString(ownerAccount.getSum() - sum), "Id", Long.toString(sourceAccountId));
             Tools.getStatement().executeUpdate(
                     a);
             Tools.getStatement().executeUpdate(
                     Tools.getUpdateQuery(TabelName,"Sum", Long.toString(targetAccount.getSum() + sum), "Id", Long.toString(targetAccountId)));
+
+            Transaction.insertTransaction(sourceAccountId, targetAccountId, sum, new Date());
+
         }
         conn.endRequest();
     }

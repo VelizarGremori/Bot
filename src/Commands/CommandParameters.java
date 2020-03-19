@@ -1,4 +1,4 @@
-package Commands;
+package commands;
 
 public abstract class CommandParameters {
     public CommandParameters(long chat_id) {
