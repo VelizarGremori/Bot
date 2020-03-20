@@ -28,8 +28,8 @@ public class TransferCommandParameters extends CommandParameters{
     void parse(String[] params) {
         Options options = new Options();
 
-        Option owner_id = new Option("o", "ownerId", true, "ownerId");
-        options.addOption(owner_id);
+        Option source_id = new Option("s", "sourceId", true, "sourceId");
+        options.addOption(source_id);
 
         Option target_id = new Option("t", "targetId", true, "targetId");
         options.addOption(target_id);
@@ -46,6 +46,7 @@ public class TransferCommandParameters extends CommandParameters{
             throw new RuntimeException(e);
         }
         var args = cmd.getArgList().iterator();
+        args.next();
         this.source_id = cmd.getOptionValue("o");
         if(this.source_id == null && args.hasNext())
             this.source_id = args.next();

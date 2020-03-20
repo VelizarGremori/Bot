@@ -1,5 +1,7 @@
 package models;
 
+import shared.Tools;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,6 +48,16 @@ public class Transaction {
         return null;
     }
 
+    public static ArrayList<Transaction> getTransactionByUser(long userId) throws SQLException{
+        var transactions = new ArrayList<Transaction>();
+        var accounts = Account.getAccountsByUser(userId);
+        for (var account:
+             accounts) {
+            transactions.addAll(getTransactionByAccount(account.getId()));
+        }
+        return transactions;
+    }
+
     public static ArrayList<Transaction> getTransactionByAccount(long accountId) throws SQLException{
         var transactions = new ArrayList<Transaction>();
         transactions.addAll(getTransactionBySourceAccount(accountId));
@@ -72,7 +84,7 @@ public class Transaction {
         var resultSet = Tools.getResult(Tools.getSelectQuery(TabelName, "TargetAccountId", Long.toString(targetAccountId)));
         while (resultSet.next()){
             var id = resultSet.getLong("Id");
-            var sourceAccountId = resultSet.getLong("SourceAccountIds");
+            var sourceAccountId = resultSet.getLong("SourceAccountId");
             var amount = resultSet.getLong("Amount");
             var dateTime = resultSet.getDate("DateTime");
 

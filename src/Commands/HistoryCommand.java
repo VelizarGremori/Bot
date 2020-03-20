@@ -2,25 +2,26 @@ package commands;
 
 import models.Account;
 import models.Session;
+import models.Transaction;
 
 import java.sql.SQLException;
 
-@CommandName("/accounts")
-public class AccountsCommand extends Command<AccountsCommandParameters> {
+@CommandName("/history")
+public class HistoryCommand extends Command<HistoryCommandParameters> {
 
-    private AccountsCommandParameters params;
+    private HistoryCommandParameters params;
 
-    public void setParameters(AccountsCommandParameters params) {
+    public void setParameters(HistoryCommandParameters params) {
         this.params = params;
     }
 
     public void setParameters(String[] params, long chatId) {
-        this.params = new AccountsCommandParameters(chatId);
+        this.params = new HistoryCommandParameters(chatId);
         this.params.parse(params);
     }
 
     @Override
-    public AccountsCommandParameters getParameters() {
+    public HistoryCommandParameters getParameters() {
         return params;
     }
 
@@ -41,21 +42,26 @@ public class AccountsCommand extends Command<AccountsCommandParameters> {
     }
 
     @Override
-    protected void executeCommand(AccountsCommandParameters params) throws SQLException {
+    protected void executeCommand(HistoryCommandParameters params) throws SQLException {
         var session = Session.getSession(params.chat_id);
-        var accounts = Account.getAccountsByUser(session.getUserId());
+        var transactions = Transaction.getTransactionByUser(session.getUserId());
         var builder = new StringBuilder();
-        if(accounts.size() <= 0)
+        if(transactions.size() <= 0)
         {
-            response.setMessage("У вас пока нет счетов");
+            response.setMessage("С вашими счетами операция не было");
             response.setState(CommandState.SUCCESS);
             return;
         }
-        for(Account account: accounts){
-            builder.append("Номер счета: ");
-            builder.append(account.getId());
-            builder.append("  Остаток: ");
-            builder.append(account.getSum());
+        for(Transaction transaction: transactions){
+            builder.append("Номер счета отправителя: ");
+            builder.append(transaction.getSourceAccountId());
+            builder.append(System.lineSeparator());
+            builder.append("Номер счета получателя: ");
+            builder.append(transaction.getTargetAccountId());
+            builder.append(System.lineSeparator());
+            builder.append("  Сумма: ");
+            builder.append(transaction.getAmount());
+            builder.append(System.lineSeparator());
             builder.append(System.lineSeparator());
         }
 
@@ -64,4 +70,5 @@ public class AccountsCommand extends Command<AccountsCommandParameters> {
         return;
     }
 }
+
 

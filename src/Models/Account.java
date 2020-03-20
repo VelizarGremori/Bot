@@ -1,5 +1,7 @@
 package models;
 
+import shared.Tools;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,7 +67,7 @@ public class Account {
 
         var ownerAccount = getAccount(sourceAccountId);
         var targetAccount = getAccount(targetAccountId);
-        if (ownerAccount.getSum() > sum && sum > 0) {
+        if (ownerAccount.getSum() >= sum && sum > 0) {
             var a = Tools.getUpdateQuery(TabelName,"Sum", Long.toString(ownerAccount.getSum() - sum), "Id", Long.toString(sourceAccountId));
             Tools.getStatement().executeUpdate(
                     a);

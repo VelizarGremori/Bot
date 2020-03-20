@@ -65,7 +65,7 @@ public class LoginCommand extends Command<LoginCommandParameters> {
         }
         else {
             response.setMessage("Неверный логин или пароль");
-            response.setState(CommandState.FAIL);
+            response.setState(CommandState.REQUEST_AUTHORIZATION);
         }
     }
 }

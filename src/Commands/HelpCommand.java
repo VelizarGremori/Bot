@@ -23,7 +23,7 @@ public class HelpCommand extends Command<HelpCommandParameters>{
     }
 
     @Override
-    protected void executeCommand(HelpCommandParameters params) throws SQLException {
+    protected void executeCommand(HelpCommandParameters params){
         response.setMessage(
                 "Вы можете использовать следующие команды: \n\r" +
                 "/login Login Password \n\r" +

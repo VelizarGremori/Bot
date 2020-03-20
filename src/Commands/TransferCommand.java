@@ -34,6 +34,11 @@ public class TransferCommand extends Command<TransferCommandParameters> {
             response.setState(CommandState.REQUEST_AUTHORIZATION);
             return false;
         }
+        if(session.getUserId() == 0){
+            response.setMessage("Для данной операции необходимо авторизоваться");
+            response.setState(CommandState.REQUEST_AUTHORIZATION);
+            return false;
+        }
 
         if(params.getSource_id() == null){
             response.setMessage("Введите id вашего счета");

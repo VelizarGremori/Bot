@@ -1,5 +1,7 @@
 package models;
 
+import shared.Tools;
+
 import java.sql.SQLException;
 import java.util.HashMap;
 

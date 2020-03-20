@@ -1,7 +1,8 @@
 package models;
 
+import shared.Tools;
+
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.HashMap;
 
 public class Session {
@@ -28,7 +29,7 @@ public class Session {
         }
     }
 
-    public static Session insertSession(long userId, long chatId) throws SQLException {
+    public static Session insertSession(long chatId, long userId) throws SQLException {
         HashMap<String, Object> args = new HashMap<String, Object>();
         args.put("UserId", userId);
         args.put("ChatId", chatId);
